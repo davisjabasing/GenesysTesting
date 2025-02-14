@@ -43,7 +43,7 @@ jobs:
       GENESYSCLOUD_ARCHY_REGION: "usw2.pure.cloud"
       GENESYSCLOUD_EMAIL_DOMAIN: "skyluxtest"
       GENESYSCLOUD_EMAIL_DOMAIN_REGION: "pure.cloud"
-      TF_WORKSPACE: "genesys_email_dev"
+      TF_WORKSPACE: "dev"
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/genesys-cloud-dev-tools
@@ -100,7 +100,7 @@ jobs:
       GENESYSCLOUD_ARCHY_REGION: "usw2.pure.cloud"
       GENESYSCLOUD_EMAIL_DOMAIN: "skyluxtest"
       GENESYSCLOUD_EMAIL_DOMAIN_REGION: "pure.cloud"
-      TF_WORKSPACE: "genesys_email_test_skylux"
+      TF_WORKSPACE: "test_skylux"
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/genesys-cloud-dev-tools
