@@ -16,7 +16,7 @@ terraform {
 #  This module demonstrates how Terraform can be used to create several objects using their scripting
 #  language.
 ###
-resource "genesyscloud_routing_queue" "Queues" {
+resource "genesyscloud-routing-queue" "Queues" {
   for_each                 = toset(var.classifier_queue_names)
   name                     = each.value
   description              = "${each.value} questions and answers"
