@@ -11,14 +11,14 @@ terraform {
   required_providers {
     genesyscloud = {
       source = "mypurecloud/genesyscloud"
-      version = "~> 1.10.0"
+      version = ">= 1.10.0"
     }
   }
 }
 
 provider "genesyscloud" {
   sdk_debug = true
-  aws_region = "us-east-1"
+  aws_region = "us-west-1"
 }
 
 module "classifier_users" {
