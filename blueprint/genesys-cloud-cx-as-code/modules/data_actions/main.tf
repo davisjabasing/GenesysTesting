@@ -1,12 +1,11 @@
-
 terraform {
   required_providers {
     genesyscloud = {
       source = "mypurecloud/genesyscloud"
-
     }
   }
 }
+
 
 ###
 #
@@ -15,16 +14,22 @@ terraform {
 # Creates a new web-based data integration and then adds a data action that calls out to the AWS API Gateway endpoint and 
 # Lambda that is performing our email-classification.
 #
-### 
+###
+
 
 resource "genesyscloud_integration" "ComprehendDataAction" {
   intended_state   = "ENABLED"
   integration_type = "custom-rest-actions"
+
   config {
     name       = "ComprehendDataAction"
     properties = jsonencode({})
     advanced   = jsonencode({})
     notes      = "Used to invoke an AWS Comprehend job"
+  }
+
+  lifecycle {
+    ignore_changes = [config]
   }
 }
 
@@ -33,6 +38,7 @@ resource "genesyscloud_integration_action" "LookupQueueName" {
   category       = "ComprehendDataAction"
   integration_id = genesyscloud_integration.ComprehendDataAction.id
   secure         = false
+
   contract_input = jsonencode({
     "type"     = "object",
     "required" = ["EmailSubject", "EmailBody"],
@@ -45,17 +51,17 @@ resource "genesyscloud_integration_action" "LookupQueueName" {
       }
     }
   })
+
   contract_output = jsonencode({
     "type" = "object",
-    "required" = [
-      "QueueName"
-    ],
+    "required" = ["QueueName"],
     "properties" = {
       "QueueName" = {
         "type" = "string"
       }
     }
   })
+
   config_request {
     request_url_template = var.classifier_url
     request_type         = "POST"
@@ -65,9 +71,14 @@ resource "genesyscloud_integration_action" "LookupQueueName" {
       X-API-Key                          = var.classifier_api_key
     }
   }
+
   config_response {
     translation_map          = {}
     translation_map_defaults = {}
     success_template         = "$${rawResult}"
+  }
+
+  lifecycle {
+    ignore_changes = [config_request, config_response]
   }
 }
