@@ -19,6 +19,12 @@ variable "classifier_api_key" {
   description = "API Key for classifier endpoint"
 }
 
+variable "GENESYCLOUD_REGION" {
+  type        = string
+  description = "The Region from terraform cloud"
+}
+
+
 
 
 
