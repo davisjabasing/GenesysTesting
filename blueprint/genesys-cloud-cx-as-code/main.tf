@@ -18,7 +18,6 @@ terraform {
 
 provider "genesyscloud" {
   sdk_debug = true
-  aws_region = var.GENESYCLOUD_REGION
 }
 
 module "classifier_users" {
