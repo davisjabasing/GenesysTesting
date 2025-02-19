@@ -18,7 +18,8 @@ terraform {
 
 provider "genesyscloud" {
   sdk_debug = true
-  
+  aws_region = "ap-south-1"
+  request_timeout = 120
 }
 
 module "classifier_users" {
