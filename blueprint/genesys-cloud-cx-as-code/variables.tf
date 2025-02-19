@@ -20,6 +20,14 @@ variable "classifier_api_key" {
 }
 
 
+variable "aws_region" {
+  type        = string
+  description = "AWS Region"
+}
+
+
+
+
 
 
 
