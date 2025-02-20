@@ -97,7 +97,7 @@ jobs:
       GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET_TEST }}
       GENESYSCLOUD_API_REGION: "https://api.aps1.pure.cloud"
       GENESYSCLOUD_REGION: "ap-south-1"
-      GENESYSCLOUD_ARCHY_REGION: "mypurecloud.com"
+      GENESYSCLOUD_ARCHY_REGION: "aps1.pure.cloud"
       GENESYSCLOUD_EMAIL_DOMAIN: "skyluxemail"
       GENESYSCLOUD_EMAIL_DOMAIN_REGION: "pure.cloud"
       TF_WORKSPACE: "test_skylux"
